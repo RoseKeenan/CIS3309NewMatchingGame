@@ -93,6 +93,5 @@ namespace MatchingGame.Forms
                 lblTimer.Text = "00:" + time.ToString();  //displays the timer on board
             };
         }
-
     }
 }
