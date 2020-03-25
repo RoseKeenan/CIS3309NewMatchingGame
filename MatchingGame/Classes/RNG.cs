@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -6,13 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MatchingGame_Project_III_.Classes;
+
 //Purpose: randomly select a card from collection and randomly place on the board
-namespace MatchingGame_Project_III_.Classes
+namespace MatchingGame.Classes
 {
 
     class RNG : Form
     {
         public static Random RandomObj;
+        
         // Type random object
         public RNG()
         {
