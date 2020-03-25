@@ -39,9 +39,10 @@
             // lblCutePairsGame
             // 
             this.lblCutePairsGame.AutoSize = true;
-            this.lblCutePairsGame.Location = new System.Drawing.Point(531, 64);
+            this.lblCutePairsGame.Font = new System.Drawing.Font("Segoe Script", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCutePairsGame.Location = new System.Drawing.Point(464, 9);
             this.lblCutePairsGame.Name = "lblCutePairsGame";
-            this.lblCutePairsGame.Size = new System.Drawing.Size(147, 32);
+            this.lblCutePairsGame.Size = new System.Drawing.Size(377, 99);
             this.lblCutePairsGame.TabIndex = 0;
             this.lblCutePairsGame.Text = "Cute Pairs";
             // 
@@ -90,7 +91,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1495, 1123);
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.ClientSize = new System.Drawing.Size(1314, 1123);
             this.Controls.Add(this.pnlCard);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.txtTimer);
