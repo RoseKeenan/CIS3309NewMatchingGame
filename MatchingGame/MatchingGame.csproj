@@ -47,7 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BoardClass.cs" />
+    <Compile Include="Classes\CardClass.cs" />
     <Compile Include="Classes\PlayerClass.cs" />
+    <Compile Include="Classes\RNG.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmGame.cs">
       <SubType>Form</SubType>
     </Compile>
