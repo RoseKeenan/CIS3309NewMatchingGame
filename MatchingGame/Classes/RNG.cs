@@ -7,15 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MatchingGame_Project_III_.Classes;
+using MatchingGame.Forms;
+using MatchingGame.Properties;
+
 
 //Purpose: randomly select a card from collection and randomly place on the board
 namespace MatchingGame.Classes
 {
 
-    class RNG : Form
+    public class RNG : Form
     {
-        public static Random RandomObj;
         
+        public static Random RandomObj;
+       
+
         // Type random object
         public RNG()
         {
@@ -23,24 +28,42 @@ namespace MatchingGame.Classes
             // Creates a random object
         }  // end RNG
 
-        //calls the Tags method to assigns tags values to each image
-        public void AssignImages()
-        {
-            for (int i = 0; i < Card_Classclass.pictures.Count; i++)
-            {
-                Card_Classclass.Tags(i);
-            }
-            //assigns images to each card
-            foreach (Control c in this.Controls)
-            {
-                int j = RandomObj.Next(Card_Classclass.pictures.Count);
-                PictureBox p = (PictureBox)c;     //getting a pictureBox
-                p.InitialImage = Card_Classclass.pictures[j];  //setting a random image to the picturebox
-                p.Tag = Card_Classclass.pictures[j].Tag;   //Image tag is equal to the picturebox tag
-                Card_Classclass.pictures.RemoveAt(j);    //remove the image from the list
-            }
-        }
+        //Set Tag values at random
+
+        //public void Tags()
+        //{
+        //    int[] arr = new int[16];
+        //    int index = 0;
+
+        //    int r;
+        //    while (index < 16)
+        //    {
+        //        r = RandomObj.Next(1, 17);
+        //        if (Array.IndexOf(arr, r) == -1)
+        //        {
+        //            arr[index] = r;
+        //            index++;
+        //        }
+        //    }
+        //    for (index = 0; index < 16; index++)
+        //    {
+        //        if (arr[index] > 8) arr[index] -= 8;
+        //    }
+        //    index = 0;
+        //    foreach (Control x in this.Controls)
+        //    {
+        //        if (x is PictureBox)
+        //        {
+        //            (x as PictureBox).Tag = arr[index].ToString();
+        //            index++;
+        //        }
+        //    }
+
+
+        //}
+
     }
-
-
 }
+
+
+    
