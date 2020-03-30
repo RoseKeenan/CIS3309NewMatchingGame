@@ -7,10 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MatchingGame.Forms;
+using MatchingGame.Properties;
+using MatchingGame_Project_III_.Classes;
 
 namespace MatchingGame.Classes
 {
-    class BoardClass
+   public class BoardClass
     {
 
         private const int NUMBER_OF_PAIRS = 8;
@@ -19,6 +22,13 @@ namespace MatchingGame.Classes
         {
             //empty constructor
         }
+        public  static int getNumberOfPairs {
+            get
+            {
+                return NUMBER_OF_PAIRS;
+            }
+        }
+
     }
 
 }

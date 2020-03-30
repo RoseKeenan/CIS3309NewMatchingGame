@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MatchingGame.Classes;
+using MatchingGame.Forms;
+using MatchingGame.Properties;
 using MatchingGame_Project_III_.Classes;
 
 //Purpose: Stores an integer value of the card and references an image
@@ -21,69 +24,72 @@ namespace MatchingGame_Project_III_.Classes
 
 public class Card_Classclass : Form
 {
-
-    //array of an image class
-
-    public static List<Bitmap> pictures = new List<Bitmap>(){
-
-                    //Properties.Resources.bird,
-                    //Properties.Resources.bird,
-                    //Properties.Resources.cat,
-                    //Properties.Resources.cat,
-                    //Properties.Resources.elephant,
-                    //Properties.Resources.elephant,
-                    //Properties.Resources.fox,
-                    //Properties.Resources.fox,
-                    //Properties.Resources.monkey,
-                    //Properties.Resources.monkey,
-                    //Properties.Resources.panda,
-                    //Properties.Resources.panda,
-                    //Properties.Resources.puppy,
-                    //Properties.Resources.puppy,
-                    //Properties.Resources.sheep,
-                    //Properties.Resources.sheep
-        };
-
-
-
-    //assign a value to each image
-    public static void Tags(int index)
+     static frmGame form1= new frmGame();  //instance of the frmGame
+     private static int NUMBER_OF_MATCHES = 0;      //number of matches the user gets
+   
+    //finds a match
+    public static void isMatch(PictureBox previous, PictureBox current)
     {
-        switch (index)
+        if (previous.Tag.ToString() == current.Tag.ToString())  // compare the two cards tag
         {
-            case 0:
+            Application.DoEvents();
+            System.Threading.Thread.Sleep(500);
+            previous.Visible = false;
+            current.Visible = false;
+            NUMBER_OF_MATCHES++;
+            
+           
+            if (BoardClass.getNumberOfPairs == NUMBER_OF_MATCHES)   //found all pairs
+            {
+                form1.StopTimer();        // call a method to stop the timer (frmGame)
+                
+            }
+            
+        }
+        else
+        {
+            Application.DoEvents();                 //if the tags are not equal flip them back over
+            System.Threading.Thread.Sleep(500);     
+            previous.Image = Resources.heartCover;
+            current.Image = Resources.heartCover;
+        }
+    }
+
+
+    //  converts all  picureBox tags to image
+    public static void showImage(PictureBox box)
+    {
+        switch (Convert.ToInt32(box.Tag))
+        {
             case 1:
-                pictures[index].Tag = "bird";
+                box.Image = Resources.butterfly;
                 break;
             case 2:
+                box.Image = Resources.crocodile;
+                break;
             case 3:
-                pictures[index].Tag = "cat";
+                box.Image = Resources.elephant;
                 break;
             case 4:
+                box.Image = Resources.frog;
+                break;
             case 5:
-                pictures[index].Tag = "elephant";
+                box.Image = Resources.lion;
                 break;
             case 6:
+                box.Image = Resources.sea_lion;
+                break;
             case 7:
-                pictures[index].Tag = "fox";
+                box.Image = Resources.squid;
                 break;
             case 8:
-            case 9:
-                pictures[index].Tag = "monkey";
+                box.Image = Resources.worm;
                 break;
-            case 10:
-            case 11:
-                pictures[index].Tag = "panda";
-                break;
-            case 12:
-            case 13:
-                pictures[index].Tag = "puppy";
-                break;
-            case 14:
-            case 15:
-                pictures[index].Tag = "sheep";
+            default:
+                box.Image = Resources.heartCover;
                 break;
         }
+       
 
     }
 
