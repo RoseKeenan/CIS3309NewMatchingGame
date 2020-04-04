@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MatchingGame.Forms;
 using MatchingGame.Properties;
-using MatchingGame_Project_III_.Classes;
 
 namespace MatchingGame.Classes
 {

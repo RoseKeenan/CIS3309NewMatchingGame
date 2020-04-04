@@ -15,11 +15,11 @@ using MatchingGame.Properties;
 namespace MatchingGame.Classes
 {
 
-    public class RNG : Form
+    public class RNG
     {
-        
+
         public static Random RandomObj;
-       
+
 
         // Type random object
         public RNG()
@@ -66,4 +66,4 @@ namespace MatchingGame.Classes
 }
 
 
-    
+

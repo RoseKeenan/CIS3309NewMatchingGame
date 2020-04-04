@@ -49,7 +49,7 @@
             // 
             // txtInstructions
             // 
-            this.txtInstructions.Enabled = false;
+            this.txtInstructions.BackColor = System.Drawing.Color.RosyBrown;
             this.txtInstructions.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInstructions.Location = new System.Drawing.Point(141, 200);
             this.txtInstructions.Multiline = true;
@@ -84,12 +84,13 @@
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "EXIT";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(326, 822);
+            this.label1.Location = new System.Drawing.Point(285, 819);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 39);
             this.label1.TabIndex = 5;
@@ -97,10 +98,10 @@
             // 
             // txtEnterName
             // 
-            this.txtEnterName.Location = new System.Drawing.Point(563, 824);
+            this.txtEnterName.Location = new System.Drawing.Point(522, 821);
             this.txtEnterName.Name = "txtEnterName";
             this.txtEnterName.Size = new System.Drawing.Size(483, 38);
-            this.txtEnterName.TabIndex = 6;
+            this.txtEnterName.TabIndex = 1;
             // 
             // frmWelcome
             // 
@@ -118,6 +119,7 @@
             this.Controls.Add(this.lblCutePairsWelcome);
             this.Name = "frmWelcome";
             this.Text = "Welcome";
+            this.Load += new System.EventHandler(this.frmWelcome_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

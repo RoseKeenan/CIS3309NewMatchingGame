@@ -117,4 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>30, 20</value>
+  </metadata>
+  <data name="txtGameDirections.Text" xml:space="preserve">
+    <value>So, you accepted the challenge! Once you hit start, the game will begin with the timer at 60 seconds.
+You have ONE hint. This hint will give you one second to look at all the cards face up. Try and find
+all EIGHT pairs in one minute! Good luck!
+
+</value>
+  </data>
 </root>
