@@ -1,30 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using MatchingGame.Properties;
-using MatchingGame_Project_III_.Classes;
 
-namespace MatchingGame
+namespace MatchingGame.Classes
 {
-    class PlayerClass:Form
+    public static class PlayerClass
     {
-        private String playerName;
-        private int playerScore;
-        private int counter;
+        private static int playerScore;
+        private static string playerName;
 
-        public PlayerClass(String userName)
+
+        public static void setName(string name)
         {
-            this.playerName = userName;
-            this.playerScore = 0;
-            this.counter = 0;
+            playerName = name;
         }
 
-        
+        public static string getName()
+        {
+            return playerName;
+        }
+
+        public static int getScore()
+        {
+            return playerScore;
+        }
+
+        public static void increaseScore()
+        {
+            playerScore = playerScore + 10;
+        }
+
     }
+
+
 }

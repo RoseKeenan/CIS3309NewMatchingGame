@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MatchingGame.Classes;
 using MatchingGame.Forms;
 using MatchingGame.Properties;
-using MatchingGame_Project_III_.Classes;
 
 //Purpose: Stores an integer value of the card and references an image
 
@@ -22,13 +14,13 @@ namespace MatchingGame_Project_III_.Classes
     }
 }
 
-public class Card_Classclass : Form
+public class Card_Classclass
 {
      static frmGame form1= new frmGame();  //instance of the frmGame
      private static int NUMBER_OF_MATCHES = 0;      //number of matches the user gets
    
     //finds a match
-    public static void isMatch(PictureBox previous, PictureBox current)
+    public static Boolean isMatch(PictureBox previous, PictureBox current)
     {
         if (previous.Tag.ToString() == current.Tag.ToString())  // compare the two cards tag
         {
@@ -37,11 +29,12 @@ public class Card_Classclass : Form
             previous.Visible = false;
             current.Visible = false;
             NUMBER_OF_MATCHES++;
-            
+            form1.increaseScore();           
            
             if (BoardClass.getNumberOfPairs == NUMBER_OF_MATCHES)   //found all pairs
             {
-                form1.StopTimer();        // call a method to stop the timer (frmGame)
+                //form1.StopTimer();        // call a method to stop the timer (frmGame)
+                return true;
                 
             }
             
@@ -52,7 +45,10 @@ public class Card_Classclass : Form
             System.Threading.Thread.Sleep(500);     
             previous.Image = Resources.heartCover;
             current.Image = Resources.heartCover;
+            return false;
         }
+
+        return false;
     }
 
 
