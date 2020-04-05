@@ -103,6 +103,26 @@ namespace MatchingGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hatch {
+            get {
+                object obj = ResourceManager.GetObject("hatch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hatch1 {
+            get {
+                object obj = ResourceManager.GetObject("hatch1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap heartCover {
             get {
                 object obj = ResourceManager.GetObject("heartCover", resourceCulture);
@@ -116,6 +136,26 @@ namespace MatchingGame.Properties {
         internal static System.Drawing.Bitmap lion {
             get {
                 object obj = ResourceManager.GetObject("lion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap molang {
+            get {
+                object obj = ResourceManager.GetObject("molang", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap molang1 {
+            get {
+                object obj = ResourceManager.GetObject("molang1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

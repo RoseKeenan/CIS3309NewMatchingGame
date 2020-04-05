@@ -35,6 +35,8 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtEnterName = new System.Windows.Forms.TextBox();
+            this.imgChicken = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imgChicken)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCutePairsWelcome
@@ -51,7 +53,7 @@
             // 
             this.txtInstructions.BackColor = System.Drawing.Color.RosyBrown;
             this.txtInstructions.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInstructions.Location = new System.Drawing.Point(141, 200);
+            this.txtInstructions.Location = new System.Drawing.Point(160, 609);
             this.txtInstructions.Multiline = true;
             this.txtInstructions.Name = "txtInstructions";
             this.txtInstructions.ReadOnly = true;
@@ -65,7 +67,7 @@
             this.btnStart.BackColor = System.Drawing.Color.Chartreuse;
             this.btnStart.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(169, 914);
+            this.btnStart.Location = new System.Drawing.Point(188, 1364);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(343, 147);
             this.btnStart.TabIndex = 3;
@@ -78,7 +80,7 @@
             this.btnExit.BackColor = System.Drawing.Color.Red;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(726, 914);
+            this.btnExit.Location = new System.Drawing.Point(745, 1364);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(343, 147);
             this.btnExit.TabIndex = 4;
@@ -90,7 +92,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(285, 819);
+            this.label1.Location = new System.Drawing.Point(313, 1250);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 39);
             this.label1.TabIndex = 5;
@@ -98,10 +100,20 @@
             // 
             // txtEnterName
             // 
-            this.txtEnterName.Location = new System.Drawing.Point(522, 821);
+            this.txtEnterName.Location = new System.Drawing.Point(550, 1252);
             this.txtEnterName.Name = "txtEnterName";
             this.txtEnterName.Size = new System.Drawing.Size(483, 38);
             this.txtEnterName.TabIndex = 1;
+            // 
+            // imgChicken
+            // 
+            this.imgChicken.Image = global::MatchingGame.Properties.Resources.hatch1;
+            this.imgChicken.InitialImage = global::MatchingGame.Properties.Resources.molang;
+            this.imgChicken.Location = new System.Drawing.Point(505, 198);
+            this.imgChicken.Name = "imgChicken";
+            this.imgChicken.Size = new System.Drawing.Size(318, 281);
+            this.imgChicken.TabIndex = 7;
+            this.imgChicken.TabStop = false;
             // 
             // frmWelcome
             // 
@@ -110,7 +122,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(1380, 1169);
+            this.ClientSize = new System.Drawing.Size(1380, 1594);
+            this.Controls.Add(this.imgChicken);
             this.Controls.Add(this.txtEnterName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExit);
@@ -120,6 +133,7 @@
             this.Name = "frmWelcome";
             this.Text = "Welcome";
             this.Load += new System.EventHandler(this.frmWelcome_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.imgChicken)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,6 +147,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtEnterName;
+        private System.Windows.Forms.PictureBox imgChicken;
     }
 }
 
