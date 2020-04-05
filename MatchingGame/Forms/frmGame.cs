@@ -1,9 +1,22 @@
-﻿using System;
+﻿/* Rose Marie Keenan
+ * Maryam Salawu
+ * CIS 3309 Section 01
+ * Matching Game
+ * frmGame - The game form
+ * Due: 04.05.2020
+ * Includes methods to create the board and flip over cards
+ * Includes timer
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -49,11 +62,14 @@ namespace MatchingGame.Forms
         // 60 seconds from the start
         int timeLeft;
 
+
+        // Constructor
         public frmGame()
         {
             InitializeComponent();
         }
 
+        // Form load calls method to start the game
         private void frmGame_Load(object sender, EventArgs e)
         {
             StartGame();
@@ -186,6 +202,7 @@ namespace MatchingGame.Forms
         //starts the matching game
         public void StartGame()
         {
+            playSimpleSound();
             Tags();     //set tag numbers to each picturebox
             allvisibleTrue();
             btnHint.Enabled = true;
@@ -211,6 +228,7 @@ namespace MatchingGame.Forms
 
         }
 
+        // Increases the player's score by calling a method in the player class
         public void increaseScore()
         {
             PlayerClass.increaseScore();
@@ -224,6 +242,7 @@ namespace MatchingGame.Forms
             timer1.Stop();
         }
 
+        // Tick event for every second of the timer
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (foundMatches)
@@ -254,6 +273,7 @@ namespace MatchingGame.Forms
             }
         }
 
+        // Starts the game with the button
         private void btnStart_Click(object sender, EventArgs e)
         {
             startGame = true;
@@ -263,6 +283,7 @@ namespace MatchingGame.Forms
             count++;
         }
 
+        // Diaglogue Box to play again
         private void playAgain()
         {
             DialogResult play = MessageBox.Show("Would you like to play again?", "TRY AGAIN?", MessageBoxButtons.YesNo);
@@ -275,6 +296,12 @@ namespace MatchingGame.Forms
                     Close();
                     break;
             }
+        }
+
+        private void playSimpleSound()
+        {
+            //SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\rosek\Temple Years\Spring 2020\C#\MatchingGame\MatchingGame\music.wav");
+            //simpleSound.Play();
         }
     }
  }

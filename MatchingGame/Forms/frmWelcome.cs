@@ -1,4 +1,17 @@
-﻿using System;
+﻿/* Rose Marie Keenan
+ * Maryam Salawu
+ * CIS 3309 Section 01
+ * Matching Game
+ * frmWelcome - The welcome form for the game
+ * Due: 04.05.2020
+ * Validates the name of the player
+ * Stores the player name in a static class attribute
+ * Opens the game form
+ * Includes instructions for the game
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

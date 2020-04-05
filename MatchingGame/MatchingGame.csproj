@@ -123,5 +123,17 @@
   <ItemGroup>
     <None Include="Resources\flower.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\molang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hatch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hatch1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="music.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

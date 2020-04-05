@@ -1,4 +1,17 @@
-﻿using System;
+﻿/* Rose Marie Keenan
+ * Maryam Salawu
+ * CIS 3309 Section 01
+ * Matching Game
+ * Card Class
+ * Due: 04.05.2020
+ * Includes information on the card
+ * Assigns picture each card
+ * Includes isMatch method that checks if the two cards images match
+ */
+
+
+
+using System;
 using System.Windows.Forms;
 using MatchingGame.Classes;
 using MatchingGame.Forms;
