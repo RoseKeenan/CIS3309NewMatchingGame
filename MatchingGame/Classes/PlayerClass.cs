@@ -1,30 +1,54 @@
-﻿using System;
+﻿/* Rose Marie Keenan
+ * Maryam Salawu
+ * CIS 3309 Section 01
+ * Matching Game
+ * Player Class
+ * Due: 04.05.2020
+ * This is a static class - no initialization necessary
+ * Includes information of the player such as the score and the name
+ * Includes getter and setter methods
+ * Includes increase score method that increases the score for every correct match
+ */
+
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using MatchingGame.Properties;
-using MatchingGame_Project_III_.Classes;
 
-namespace MatchingGame
+namespace MatchingGame.Classes
 {
-    class PlayerClass:Form
+    // no constructor in static class
+    public static class PlayerClass
     {
-        private String playerName;
-        private int playerScore;
-        private int counter;
+        private static int playerScore;
+        private static string playerName;
 
-        public PlayerClass(String userName)
+        // Setter method for the name attribute
+        public static void setName(string name)
         {
-            this.playerName = userName;
-            this.playerScore = 0;
-            this.counter = 0;
+            playerName = name;
         }
 
-        
+        // getter method for the name attribute
+        public static string getName()
+        {
+            return playerName;
+        }
+
+        // getter method for the score attribute
+        public static int getScore()
+        {
+            return playerScore;
+        }
+
+        // increases the player score by 10 every time it is called - this happens when the player finds a match
+        public static void increaseScore()
+        {
+            playerScore = playerScore + 10;
+        }
+
     }
+
+
 }

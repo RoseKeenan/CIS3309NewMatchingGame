@@ -1,4 +1,17 @@
-﻿using System;
+﻿/* Rose Marie Keenan
+ * Maryam Salawu
+ * CIS 3309 Section 01
+ * Matching Game
+ * frmWelcome - The welcome form for the game
+ * Due: 04.05.2020
+ * Validates the name of the player
+ * Stores the player name in a static class attribute
+ * Opens the game form
+ * Includes instructions for the game
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,24 +20,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MatchingGame_Project_III_.Classes;
+using MatchingGame.Classes;
 
 namespace MatchingGame.Forms
 {
     public partial class frmWelcome : Form
     {
-        public string PlayerName;
+
         public frmWelcome()
         {
             InitializeComponent();
-            
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             if(!string.IsNullOrWhiteSpace(txtEnterName.Text))
             {
-                Form GameForm = new frmGame();
+                PlayerClass.setName(txtEnterName.Text);
+                frmGame GameForm = new frmGame();
                 GameForm.ShowDialog();
                 this.Visible = false;
                 this.Close();
@@ -34,8 +47,17 @@ namespace MatchingGame.Forms
             {
                 MessageBox.Show("Please enter a name!");
                 txtEnterName.Focus();
-                PlayerName = txtEnterName.Text;
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void frmWelcome_Load(object sender, EventArgs e)
+        {
+            txtEnterName.Focus();
         }
     }
 }

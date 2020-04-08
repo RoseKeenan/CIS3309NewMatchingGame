@@ -1,4 +1,14 @@
-﻿using System;
+﻿/* Rose Marie Keenan
+ * Maryam Salawu
+ * CIS 3309 Section 01
+ * Matching Game
+ * RNG Class
+ * Due: 04.05.2020
+ * Random Number Generator Object
+ */
+
+
+using System;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -15,11 +25,11 @@ using MatchingGame.Properties;
 namespace MatchingGame.Classes
 {
 
-    public class RNG : Form
+    public class RNG
     {
-        
+
         public static Random RandomObj;
-       
+
 
         // Type random object
         public RNG()
@@ -66,4 +76,4 @@ namespace MatchingGame.Classes
 }
 
 
-    
+

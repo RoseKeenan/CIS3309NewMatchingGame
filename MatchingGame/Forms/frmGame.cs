@@ -1,9 +1,22 @@
-﻿using System;
+﻿/* Rose Marie Keenan
+ * Maryam Salawu
+ * CIS 3309 Section 01
+ * Matching Game
+ * frmGame - The game form
+ * Due: 04.05.2020
+ * Includes methods to create the board and flip over cards
+ * Includes timer
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +26,7 @@ using MatchingGame_Project_III_.Classes;
 
 namespace MatchingGame.Forms
 {
+
     public partial class frmGame : Form
     {
         private const int ROWS = 4;
@@ -21,40 +35,52 @@ namespace MatchingGame.Forms
 
         private Button[,] newButton = new Button[ROWS, COLUMNS];
 
-        int padding = 20;
+        //first card the user clicks on
+        PictureBox prev;
 
-        Timer clickTimer = new Timer();
-        int time = 60;  //60 seconds
-        Timer timer = new Timer { Interval = 1000 };
-        PictureBox prev;       //first card the user clicks on
-        int num = 0;          //used to help with matching the cards
-        public int hint;        //number of hints the user gets
-        Random RandomObj = new Random();        // random object
-        int count = 0;                //starts the timer
+        //used to help with matching the cards
+        int num = 0;
+
+        //number of hints the user gets
+        public int hint;
+
+        // random object
+        Random RandomObj = new Random();
+
+        //starts the timer
+        int count = 0;                
+
+        //boolean to lead the timer to a stop
+        Boolean foundMatches = false;
+
+        //ensures the user hits start before playing
+        Boolean startGame = false;
+
+        // Timer object
+        Timer timer = new Timer();
+
+        // 60 seconds from the start
+        int timeLeft;
+
+
+        // Constructor
         public frmGame()
         {
             InitializeComponent();
         }
 
+        // Form load calls method to start the game
         private void frmGame_Load(object sender, EventArgs e)
         {
             StartGame();
-
         }
 
         //click event for cards
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            PictureBox current = (sender as PictureBox);  //first card cliked on
-            if (count == 0)  //allows the timer to start once
+            if(startGame)
             {
-                Timer();
-                count++;
-                
-            }
-
-            else
-            {
+                PictureBox current = (sender as PictureBox);  //first card cliked on
                 Card_Classclass.showImage((sender as PictureBox));       //display image
                 if (num == 0)
                 {
@@ -63,9 +89,14 @@ namespace MatchingGame.Forms
                 }
                 else if (prev != current)
                 {
-                    Card_Classclass.isMatch(prev, current);
+                    foundMatches = Card_Classclass.isMatch(prev, current);
                     num = 0;
                 }
+            }
+           
+            else
+            {
+                MessageBox.Show("Please hit start to begin the game.", "UH OH!");
             }
 
         }
@@ -81,8 +112,6 @@ namespace MatchingGame.Forms
 
                 }
             }
-
-
         }
 
         // Initialize all pictureBoxes tags to 0
@@ -96,8 +125,6 @@ namespace MatchingGame.Forms
                     (x as PictureBox).Tag = "0";
                 }
             }
-
-
         }
 
         //Makes all pictureboxes visible
@@ -112,6 +139,7 @@ namespace MatchingGame.Forms
                 }
             }
         }
+
         //pictureboxes can be clicked on
         public void activeAll()
         {
@@ -124,6 +152,7 @@ namespace MatchingGame.Forms
 
             }
         }
+
         //pictureboes cannot be clicked on
         public void deActiveAll()
         {
@@ -168,39 +197,18 @@ namespace MatchingGame.Forms
                     i++;
                 }
             }
-
-
         }
+ 
         //starts the matching game
         public void StartGame()
         {
-            
+            playSimpleSound();
             Tags();     //set tag numbers to each picturebox
             allvisibleTrue();
             btnHint.Enabled = true;
             resetImages();
             num = 0;     
             activeAll();
-
-        }
-        //timer 
-        public void Timer()
-        {
-
-            timer.Start();  //Timer starts
-            timer.Tick += delegate
-            {
-
-                time--;
-                if (time < 0)
-                {
-                    timer.Stop();
-                    MessageBox.Show("Out of Time");
-                    
-                }
-                var ssTime = TimeSpan.FromSeconds(time);
-                txtTimer.Text = "00:" + time.ToString();  //displays the timer on board
-            };
         }
 
         //turns over all the cards for 1 second
@@ -219,52 +227,81 @@ namespace MatchingGame.Forms
            
 
         }
+
+        // Increases the player's score by calling a method in the player class
+        public void increaseScore()
+        {
+            PlayerClass.increaseScore();
+        }
+
         //stops the timer
         public void StopTimer()
         {
-            timer.Stop();
-            txtTimer.Text = "";
             MessageBox.Show("Congratulations you win!");
             btnHint.Enabled = false;
-
+            timer1.Stop();
         }
-     }
-    //public void createBoard()
-    //{
-    //    // Dynamically Creates 25 buttons on a Bingo Board 
-    //    // Written by Bill Hall with Joe Jupin and FLF
-    //    // This should be enough help for all of you to adapt this to your own needs
-    //    // Create and  Add the buttons to the form
 
-    //    Size size = new Size(75, 75);
-    //    Point loc = new Point(0, 0);
-    //    int topMargin = 60;
+        // Tick event for every second of the timer
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (foundMatches)
+            {
+                timer1.Stop();
+                int totalScore = timeLeft + PlayerClass.getScore();
+                MessageBox.Show("Well done, " + PlayerClass.getName() + "! You found all the matches! \nYou found the matches in " + (60 - timeLeft) + " seconds!" +
+                    "\nYour total score is: " + totalScore, "CONGRATULATIONS");
+                playAgain();
+            }
 
-    //    for (int row = 0; row < ROWS; row++)
-    //    {
-    //        loc.Y = topMargin + row * (size.Height + padding);
-    //        int extraLeftPadding = 50;
-    //        for (int col = 0; col < COLUMNS; col++)
-    //        {
-    //            newButton[row, col] = new Button();
-    //            newButton[row, col].Location = new Point(extraLeftPadding + col * (size.Width + padding), loc.Y);
-    //            newButton[row, col].Size = size;
-    //            newButton[row, col].Font = new Font("Arial", 24, FontStyle.Bold);
-    //            newButton[row, col].Enabled = true;
+            else if (timeLeft > 0)
+            {
+                // Display the new time left
+                // by updating the Time Left label.
+                timeLeft = timeLeft - 1;
+                timerLabel.Text = timeLeft + " seconds";
+            }
 
-    //            newButton[row, col].Font = new Font("Arial", 24, FontStyle.Bold);
-    //            newButton[row, col].Text = "❤";
-    //            //int value = Convert.ToInt16(newButton[row, col].Text);
+            else
+            {
+                // If the user ran out of time, stop the timer, show
+                // a MessageBox, and fill in the answers.
+                timer1.Stop();
+                timerLabel.Text = "Time's up!";
+                MessageBox.Show("Aw man! You didn't finish in time. Your score is: " + PlayerClass.getScore(), "SORRY!");
+                playAgain();
+            }
+        }
 
-    //            newButton[row, col].Name = "btn" + row.ToString() + col.ToString();
+        // Starts the game with the button
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            startGame = true;
+            timeLeft = 60;
+            timerLabel.Text = "60 seconds";
+            timer1.Start();
+            count++;
+        }
 
-    //            // Associates the same event handler with each of the buttons generated
-    //            //newButton[row, col].Click += new EventHandler(Button_Click);
+        // Diaglogue Box to play again
+        private void playAgain()
+        {
+            DialogResult play = MessageBox.Show("Would you like to play again?", "TRY AGAIN?", MessageBoxButtons.YesNo);
+            switch (play)
+            {
+                case DialogResult.Yes:
+                    Application.Restart();
+                    break;
+                case DialogResult.No:
+                    Close();
+                    break;
+            }
+        }
 
-    //            // Add button to the form
-    //            pnlCard.Controls.Add(newButton[row, col]);
-    //        }
-    //    }
-    //} // end createBoard
-
-}
+        private void playSimpleSound()
+        {
+            //SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\rosek\Temple Years\Spring 2020\C#\MatchingGame\MatchingGame\music.wav");
+            //simpleSound.Play();
+        }
+    }
+ }
